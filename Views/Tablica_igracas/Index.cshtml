@@ -1,0 +1,57 @@
+﻿@model IEnumerable<pin_projekt.Models.Tablica_igraca>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<h2>Tablica igrača</h2>
+<hr />
+<a class="left carousel-control" href="Home" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+</a>
+
+
+<form asp-action="Detalji" method="post">
+    <label>Pretraži po poziciji</label>
+    <input type="text" name="Pozicija" />
+    <input type="submit" value="Pretraži" />
+</form>
+
+<div><a asp-action="DodajIliUredi"><i></i>Dodaj novog igrača</a></div>
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.prezime)
+            </th>
+
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.prezime)
+                </td>
+
+                <td>
+                    <a asp-action="DodajIliUredi" asp-route-id="@item.ID">Uredi</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID" onclick="return confirm('Jeste li sigurni obrisati igrača?')">Izbriši</a>
+                    <!-- onclick="alert" ne bi imao opciju cancel  -->
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

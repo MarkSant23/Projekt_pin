@@ -1,0 +1,54 @@
+﻿@model pin_projekt.Models.Tablica_igraca
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+
+<h4>Upis igrača</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="DodajIliUredi">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="ime" class="control-label"></label>
+                <input asp-for="ime" class="form-control" />
+                <span asp-validation-for="ime" class="text-danger"></span>
+            </div>
+            <div class="form-row">
+                <div class="form-group ">
+                    <label asp-for="prezime" class="control-label"></label>
+                    <input asp-for="prezime" class="form-control" />
+                    <span asp-validation-for="prezime" class="text-danger"></span>
+                </div>
+                <div class="form-group ">
+                    <label asp-for="pozicija" class="control-label"></label>
+                    <input asp-for="pozicija" class="form-control" />
+                    <span asp-validation-for="pozicija" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="klub" class="control-label"></label>
+                <input asp-for="klub" class="form-control" />
+                <span asp-validation-for="klub" class="text-danger"></span>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <input type="submit" value="Potvrdi" class="btn btn-success" />
+                </div>
+                <div class="form-group col-md-8">
+                    <a asp-action="Index"><input type="button" value="Nazad" class="btn btn-link" /></a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div><br /><br /><br />
+<p><strong>Napomena!</strong> Molimo vas da pri upisu pozicije koristite velika slova radi bolje preglednosti.</p>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

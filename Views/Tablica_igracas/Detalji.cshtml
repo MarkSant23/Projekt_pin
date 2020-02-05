@@ -1,0 +1,34 @@
+﻿@model IEnumerable<pin_projekt.Models.Tablica_igraca>
+@{
+    ViewData["Title"] = "Detalji";
+}
+
+<h2>Detalji</h2>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ime)
+        </td>
+        <br />
+        <td>
+            @Html.DisplayFor(modelItem => item.prezime)
+        </td>
+        <br />
+        <td>
+            @Html.DisplayFor(modelItem => item.pozicija)
+        </td>
+        <br />
+        <td>
+            @Html.DisplayFor(modelItem => item.klub)
+        </td>
+        <br />
+
+     </tr>
+     <hr />
+}
+        <td>
+        <a asp-action="Index"><input type="button" value="Nazad" class="btn btn-link" /></a>
+        </td>
+    

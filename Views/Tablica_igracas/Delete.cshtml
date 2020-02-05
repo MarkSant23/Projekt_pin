@@ -1,0 +1,45 @@
+﻿@model pin_projekt.Models.Tablica_igraca
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Da li ste sigurni obrisati igrača?</h3>
+<div>
+    <h4>Tablica_igraca</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.prezime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.prezime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.pozicija)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.pozicija)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.klub)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.klub)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Povratak na listu</a>
+    </form>
+</div>
