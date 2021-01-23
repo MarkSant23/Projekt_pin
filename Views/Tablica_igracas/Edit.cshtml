@@ -4,15 +4,14 @@
     ViewData["Title"] = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Uredi košarkaša</h2>
 
 <h4>Tablica_igraca</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="ID" />
+        <form asp-action="Edit" method="post">
+            <input type="hidden" asp-for="@Model.ID" />
             <div class="form-group">
                 <label asp-for="ime" class="control-label"></label>
                 <input asp-for="ime" class="form-control" />
@@ -34,7 +33,8 @@
                 <span asp-validation-for="klub" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Snimi" class="btn btn-default" />
+                <a class="btn btn-outline-primary btn-sm" asp-controller="Tablica_igracas" asp-action="Index" onclick="history.go(-1); return false;">Vrati na listu</a>
             </div>
         </form>
     </div>

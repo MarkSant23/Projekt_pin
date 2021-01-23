@@ -18,7 +18,7 @@ namespace pin_projekt.Controllers
             _context = context;
         }
     
-        // GET: Tablica_igracas
+
         public async Task<IActionResult> Index()
         {
             var context = _context.Tablica_igraca.Include(t => t.klub);
@@ -26,7 +26,7 @@ namespace pin_projekt.Controllers
         }
 
 
-        // GET: Tablica_igracas/Create
+
         public IActionResult Create(int id = 0)
         {
             if (id == 0)
@@ -36,12 +36,9 @@ namespace pin_projekt.Controllers
 
         }
 
-        // POST: Tablica_igracas/DodajIliUredi
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        
-
-        // GET: Tablica_igracas/Edit/5
         public async Task<IActionResult> Detalji(string Pozicija)
         {
 
@@ -53,7 +50,7 @@ namespace pin_projekt.Controllers
 
         }
 
-        // POST: Tablica_igracas/Edit/5       [HttpPost]
+        [HttpGet]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ID,ime,prezime,pozicija,klub")] Tablica_igraca tablica_igraca)
         {
@@ -80,22 +77,19 @@ namespace pin_projekt.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return View("Index", new Tablica_igraca[] { tablica_igraca });
             }
             return View(tablica_igraca);
         }
 
-        // GET: Tablica_igracas/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             var tablica_igraca = await _context.Tablica_igraca.FindAsync(id);
             _context.Tablica_igraca.Remove(tablica_igraca);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index");
         }
 
-
-        // POST: Tablica_igracas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -103,31 +97,14 @@ namespace pin_projekt.Controllers
             var tablica_igraca = await _context.Tablica_igraca.FindAsync(id);
             _context.Tablica_igraca.Remove(tablica_igraca);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index");
         }
 
         private bool Tablica_igracaExists(int id)
         {
             return _context.Tablica_igraca.Any(e => e.ID == id);
         }
-        // GET: Tablica_igracas/Details/3
-    //    public async Task<IActionResult> Details(int? id)
-    //    {
-           
-    //        if (id == null)
-    //        {
-    //            return NotFound();
-    //        }
 
-    //        var igrac = await _context.Tablica_igraca
-    //            .FirstOrDefaultAsync(m => m.ID == id);
-    //        if (igrac == null)
-    //        {
-    //            return NotFound();
-    //        }
-
-    //        return View(igrac); 
-    //    } 
 
     }
 }

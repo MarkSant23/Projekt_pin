@@ -13,15 +13,19 @@ namespace pin_projekt.Models
     {
         [Key]
         public int ID { get; set; }
+
         [DisplayName("Ime*")]
         [Required(ErrorMessage = "Ovo polje je obavezno")]
         public string ime { get; set; }
+
         [DisplayName("Prezime*")]
         [Required(ErrorMessage = "Ovo polje je obavezno")]
         public string prezime { get; set; }
+
         [DisplayName("Pozicija*")]
         [Required(ErrorMessage = "Ovo polje je obavezno")]
         public string pozicija { get; set; }
+
         [DisplayName("Klub*")]
         [Required(ErrorMessage = "Ovo polje je obavezno")]
         public string klub { get; set; }
